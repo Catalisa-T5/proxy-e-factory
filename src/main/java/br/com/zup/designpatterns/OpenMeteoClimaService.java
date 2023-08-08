@@ -8,13 +8,14 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Locale;
 
-public class OpenMeteoClimaService {
+public class OpenMeteoClimaService implements ClimaService {
     private String url;
     private HttpClient client;
 
     OpenMeteoClimaService(HttpClient client, Double lat, Double lon) {
-        url = String.format("https://api.open-meteo.com/v1/forecast?latitude=%.2f&longitude=%.2f&current_weather=true",lat,lon);
+        url = String.format(Locale.ENGLISH, "https://api.open-meteo.com/v1/forecast?latitude=%.2f&longitude=%.2f&current_weather=true",lat,lon);
         this.client = client;
     }
 
